@@ -235,8 +235,8 @@ const FinalCTA = () => {
             </span>  
               você precisa para executar este plano?
             </h2>
-            <p className="text-xl text-gray-800">
-              Quanto você paga por cada um deles <span className="text-primary font-semibold">NO MERCADO?</span>
+            <p className="text-base md:text-lg lg:text-xl text-gray-800">
+              Quanto você paga por cada um deles <span className="text-primary font-semibold max-[460px]:text-sm">NO MERCADO?</span>
             </p>
           </div>
 
@@ -279,7 +279,7 @@ const FinalCTA = () => {
                   <div className="text-center pt-2 border-t border-gray-100 mt-auto w-full">
                     <p className="text-lg font-bold text-primary">
                       {professional.salary}
-                      <span className="text-xs font-light opacity-50 align-super ml-0.5">*</span>
+                      <span className="text-md font-light opacity-50 align-super ml-0.5">*</span>
                     </p>
                   </div>
                 </div>
@@ -295,7 +295,7 @@ const FinalCTA = () => {
             viewport={{ once: true }}
             className="mb-6 text-center"
           >
-            <p className="text-xs font-light text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="font-light text-gray-600 max-w-3xl mx-auto leading-relaxed max-[380px]:text-xs max-[640px]:text-sm sm:text-md">
               <span className="align-super mr-1">*</span>
               Esses valores são baseados na média do mercado, entretanto não correspondem necessariamente a profissionais de alta especialização e gabarito, podendo se tratar de profissionais iniciantes ou medianos.
             </p>
@@ -345,15 +345,18 @@ const FinalCTA = () => {
                 </div>
               </div>
 
-              <p className="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
+              <p className="text-gray-700 mb-8 max-w-2xl mx-auto md:text-lg max-md:text-sm max-[535px]:text-xs max-[400px]:text-xs">
                 Descubra como podemos oferecer uma equipe completa de marketing por uma fração do custo de mercado.
               </p>
 
               <Button
                 onClick={scrollToLeadCapture}
-                className="bg-gradient-to-r from-green-600 to-green-500 hover:from-green-500 hover:to-green-400 text-white px-8 py-6 text-lg font-bold uppercase tracking-wide rounded-full shadow-lg shadow-green-600/30 hover:shadow-xl hover:shadow-green-500/40 transition-all duration-300"
+                className="bg-gradient-to-r from-green-600 to-green-500 hover:from-green-500 hover:to-green-400 text-white px-8 py-6 text-lg font-bold uppercase tracking-wider rounded-full shadow-lg shadow-green-600/30 hover:shadow-xl hover:shadow-green-500/40 transition-all duration-300 text-center max-[460px]:py-10"
               >
-                QUERO MAIS INFORMAÇÕES
+                <p className="flex items-center justify-center gap-1 text-lg font-semibold tracking-wide leading-tight uppercase max-[460px]:flex-col">
+                  <span className="whitespace-nowrap">QUERO MAIS</span>
+                  <span className="whitespace-nowrap">INFORMAÇÕES</span>
+                </p>
               </Button>
             </div>
           </motion.div>

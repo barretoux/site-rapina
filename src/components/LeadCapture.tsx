@@ -248,7 +248,7 @@ const LeadCapture: React.FC = () => {
   return (
     <section
       id="lead-capture"
-      className="pt-2 pb-36 px-4 relative overflow-visible"
+      className="pt-2 pb-36 px-auto relative overflow-visible"
       style={{
         background: "linear-gradient(180deg, #121212 0%,rgb(100, 30, 6) 100%)",
       }}
@@ -283,20 +283,20 @@ const LeadCapture: React.FC = () => {
 
       <div className="container mx-auto relative z-10">
         <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-start">
+          <div className="grid md:grid-cols-2 gap-8 items-start">
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
               viewport={{ once: true, margin: "-50px" }}
-              className="relative"
+              className="relative flex justify-center md:block"
             >
               <div className="absolute -top-8 -left-16 w-32 h-32 bg-red-500/20 rounded-full blur-3xl animate-pulse" />
               <div className="absolute -top-4 -left-8 w-16 h-16 bg-red-400/30 rounded-full blur-2xl" />
 
               <form
                 onSubmit={handleSubmit}
-                className="relative border border-white/10 rounded-2xl p-6 bg-white/5 backdrop-blur-xl space-y-4 shadow-2xl shadow-red-500/10 max-w-md"
+                className="relative border border-white/10 rounded-2xl p-6 bg-white/5 backdrop-blur-xl space-y-4 shadow-2xl shadow-red-500/10 max-w-md w-full"
                 style={{
                   background: "rgba(255, 255, 255, 0.08)",
                   backdropFilter: "blur(20px)",
@@ -382,7 +382,7 @@ const LeadCapture: React.FC = () => {
                   />
                 </div>
 
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-2 gap-3 max-[535px]:grid-cols-1">
                   <div className="space-y-1.5">
                     <Label htmlFor="sector" className="text-xs font-medium text-muted-foreground">
                       Qual o seu setor?
@@ -453,10 +453,10 @@ const LeadCapture: React.FC = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
               viewport={{ once: true, margin: "-50px" }}
-              className="space-y-8"
+              className="space-y-8 max-[380px]:space-y-6 max-[380px]:flex max-[380px]:flex-col max-[380px]:items-stretch max-[380px]:px-2"
             >
               <div className="space-y-6">
-                <h3 className="text-2xl font-bold">
+                <h3 className="font-bold sm:text-lg lg:text-2xl max-[640px]:text-md max-[380px]:text-sm">
                   Agende uma reunião online, receba um diagnóstico e comece a escalar as vendas do seu negócio.
                 </h3>
 
@@ -468,9 +468,9 @@ const LeadCapture: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
                 viewport={{ once: true }}
-                className="border border-border/50 rounded-2xl p-6 bg-card/30 backdrop-blur-sm"
+                className="border border-border/50 rounded-2xl p-6 bg-card/30 backdrop-blur-sm max-[380px]:p-4"
               >
-                <p className="text-lg leading-relaxed">
+                <p className="leading-relaxed sm:text-md lg:text-xl max-[640px]:text-sm max-[380px]:text-xs max-[380px]:whitespace-normal">
                   Envie seus dados e da sua empresa <span className="text-primary font-semibold">gratuitamente</span> através de um rápido formulário.
                 </p>
               </motion.div>
@@ -480,9 +480,9 @@ const LeadCapture: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
                 viewport={{ once: true }}
-                className="border border-border/50 rounded-2xl p-6 bg-card/30 backdrop-blur-sm"
+                className="border border-border/50 rounded-2xl p-6 bg-card/30 backdrop-blur-sm max-[380px]:p-4"
               >
-                <p className="text-lg leading-relaxed">
+                <p className="leading-relaxed sm:text-md lg:text-xl max-[640px]:text-sm max-[380px]:text-xs max-[380px]:whitespace-normal">
                   Em até 24h um <span className="text-primary font-semibold">especialista do Grupo Rapina COM</span> entrará em contato{" "}
                   <span className="text-foreground">para marcar a reunião online de diagnóstico da sua empresa.</span>
                 </p>

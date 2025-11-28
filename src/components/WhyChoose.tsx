@@ -6,19 +6,20 @@ interface Feature {
   title: string;
   description: string;
   price: string;
-  height: string;
   size: "small" | "medium" | "large";
   sectionTitle?: string;
   characteristics?: string[];
   width: string;
   bullets?: string[];
+  baseHeight: number;
+  compactHeight: number;
 }
 
-const WhyChoose = () => {
+const Services = () => {
   const features: Feature[] = [
     {
       icon: Stethoscope,
-      title: "Raio-X Analítico",
+      title: "Raio-X AnalíticU",
       description: "Entregar diagnóstico preciso e plano de ação de curto prazo que permita ao cliente:",
       bullets: [
         "Entender as causas reais dos principais problemas;",
@@ -26,18 +27,20 @@ const WhyChoose = () => {
         "Receber um roteiro tático de 30–90 dias com entregáveis e métricas a acompanhar — tudo de forma rápida e objetiva para decisão ou evolução na esteira Rapina."
       ],
       price: "R$ 1.499",
-      height: "h-[520px]", // Altura unificada
+      baseHeight: 520,
+      compactHeight: 624, // +20%
       size: "small",
-      width: "w-full md:max-w-sm" // largura para layout em colunas
+      width: "w-full md:max-w-sm", // largura para layout em colunas
     },
     {
       icon: ChartNoAxesCombined,
       title: "Conselho Direcional",
       description: "Fornecer direção estratégica contínua e responsabilização tática ao cliente, permitindo que a operação do cliente execute com maior eficiência, consistência e estratégia — sem que a Rapina tenha obrigação de executar todas as tarefas. É o *departamento estratégico terceirizado*, orientando decisões, validando hipóteses e entregando frameworks acionáveis.",
       price: "R$ 2.799",
-      height: "h-[624px]", // Altura unificada
+      baseHeight: 624,
+      compactHeight: 749, // +20%
       size: "medium",
-      width: "w-full md:max-w-sm" // largura para layout em colunas
+      width: "w-full md:max-w-sm", // largura para layout em colunas
     },
     {
       icon: Globe,
@@ -49,9 +52,10 @@ const WhyChoose = () => {
         "Escopo vivo e modular: entregas ajustadas mensalmente conforme resultados e prioridades."
       ],
       price: "R$ X.XXX",
-      height: "h-[728px]", // Altura unificada
+      baseHeight: 728,
+      compactHeight: 874, // +20%
       size: "large",
-      width: "w-full md:max-w-sm" // largura para layout em colunas
+      width: "w-full md:max-w-sm", // largura para layout em colunas
     },
   ];
 
@@ -238,8 +242,8 @@ const WhyChoose = () => {
               transition={{ duration: 0.6, delay: index * 0.15 }}
               viewport={{ once: true }}
               className={`
+                why-card
                 group relative
-                ${feature.height}
                 ${feature.width}
                 rounded-2xl p-6 md:p-8
                 bg-white
@@ -247,6 +251,7 @@ const WhyChoose = () => {
                 transition-[border-color] duration-300
                 flex flex-col justify-between
               `}
+              data-size={feature.size}
             >
               {/* Sombra fixa atrás do card - igual aos cards de profissionais da FinalCTA */}
               <div 
@@ -323,8 +328,33 @@ const WhyChoose = () => {
           ))}
         </div>
       </div>
+      <style>
+        {`
+          .why-card[data-size="small"] {
+            height: ${features.find((f) => f.size === "small")?.baseHeight || 520}px;
+          }
+          .why-card[data-size="medium"] {
+            height: ${features.find((f) => f.size === "medium")?.baseHeight || 624}px;
+          }
+          .why-card[data-size="large"] {
+            height: ${features.find((f) => f.size === "large")?.baseHeight || 728}px;
+          }
+
+          @media (max-width: 535px) {
+            .why-card[data-size="small"] {
+              height: ${features.find((f) => f.size === "small")?.compactHeight || 624}px;
+            }
+            .why-card[data-size="medium"] {
+              height: ${features.find((f) => f.size === "medium")?.compactHeight || 749}px;
+            }
+            .why-card[data-size="large"] {
+              height: ${features.find((f) => f.size === "large")?.compactHeight || 874}px;
+            }
+          }
+        `}
+      </style>
     </section>
   );
 };
 
-export default WhyChoose;
+export default Services;

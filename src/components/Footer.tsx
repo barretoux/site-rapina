@@ -19,7 +19,7 @@ const Footer = () => {
           const navHeight = nav ? nav.offsetHeight : 80;
           
           // Offset adicional maior para garantir que não corte (60px de espaçamento)
-          const additionalOffset = 60;
+          const additionalOffset = 70;
           const totalOffset = navHeight + additionalOffset;
           
           // Calcula a posição considerando o offset
@@ -41,9 +41,9 @@ const Footer = () => {
     <footer className="bg-black py-12 px-4">
       <div className="container mx-auto">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-1 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
           {/* Logo and CTA Column */}
-          <div className="space-y-4 flex flex-col items-center">
+          <div className="flex flex-col items-center">
             <div className="flex items-center gap-3">
               <img src={logo} alt="Rapina Logo" className="h-36 w-36 object-contain" />
             </div>
@@ -65,7 +65,7 @@ const Footer = () => {
           </div>
 
           {/* Nossos Contatos Column */}
-          <div className="space-y-4">
+          <div className="space-y-4 mt-4 md:mt-[0rem]">
             <h3 className="text-xl font-bold text-foreground text-black">Nossos Contatos</h3>
             <div className="space-y-2 text-sm text-foreground/80 text-black">
               <p>E-mail: <a
@@ -79,7 +79,7 @@ const Footer = () => {
           </div>
 
           {/* Navegação Column */}
-          <div className="space-y-4">
+          <div className="space-y-4 mt-4 md:mt-[0rem]">
             <h3 className="text-xl font-bold text-foreground text-black">Navegação</h3>
             <div className="space-y-2">
               <Link to="/rapina" className="block text-sm text-foreground/80 hover:text-primary transition-colors text-black">
@@ -95,7 +95,7 @@ const Footer = () => {
           </div>
 
           {/* Siga nos Column */}
-          <div className="space-y-4">
+          <div className="space-y-4 mt-4 md:mt-[0rem]">
             <h3 className="text-xl font-bold text-foreground text-black">Siga nos</h3>
             <div className="space-y-3 text-sm text-foreground/80 text-black">
               <div>

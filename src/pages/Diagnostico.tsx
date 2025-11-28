@@ -4,10 +4,18 @@ import { Button } from "@/components/ui/button";
 import { CheckCircle2, Calendar, MessageSquare } from "lucide-react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 const Diagnostico = () => {
   const navigate = useNavigate();
-  
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const scrollToLeadCapture = () => {
     navigate("/rapina#lead-capture");
   
@@ -21,7 +29,7 @@ const Diagnostico = () => {
           const navHeight = nav ? nav.offsetHeight : 80;
           
           // Offset adicional maior para garantir que não corte (60px de espaçamento)
-          const additionalOffset = 80;
+          const additionalOffset = 60;
           const totalOffset = navHeight + additionalOffset;
           
           // Calcula a posição considerando o offset
@@ -81,10 +89,10 @@ const Diagnostico = () => {
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold uppercase tracking-tight">
                 DIAGNÓSTICO <span className="text-transparent bg-clip-text bg-text-gradient-rapina">GRATUITO</span>
               </h1>
-              <p className="text-2xl text-foreground/90">
+              <p className="text-lg md:text-xl lg:text-2xl text-foreground/90">
                 Descubra como acelerar o crescimento do seu negócio
               </p>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              <p className="text-base md:text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
                 Agende uma conversa estratégica de 30 a 45 minutos onde vamos mapear as principais oportunidades de crescimento para o seu negócio.
               </p>
             </motion.div>
@@ -156,12 +164,12 @@ const Diagnostico = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.8 }}
                 viewport={{ once: true, margin: "-50px" }}
-                className="text-center bg-gradient-to-br from-primary/10 to-destructive/10 rounded-3xl p-12"
+                className="flex flex-col items-center justify-center text-center bg-gradient-to-br from-primary/10 to-destructive/10 rounded-3xl p-8 sm:p-12"
               >
                 <h2 className="text-3xl md:text-4xl font-bold mb-6 uppercase">
                   Pronto para começar?
                 </h2>
-                <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+                <p className="text-base md:text-lg lg:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
                   Agende agora seu diagnóstico gratuito e descubra como podemos acelerar seus resultados.
                 </p>
                 <Button 
@@ -179,8 +187,17 @@ const Diagnostico = () => {
                 hover:scale-105
                 shadow-md hover:shadow-lg
               "
+
+              style={{
+                // Combina as duas condições em uma única propriedade 'transform'
+                transform: windowWidth < 389 
+                    ? 'scale(0.7)' // Se windowWidth for menor que 389
+                    : windowWidth < 535 
+                        ? 'scale(0.8)' // Senão, se windowWidth for menor que 535
+                        : undefined // Senão, não aplica transformação
+            }}
                 >
-                  AGENDAR DIAGNÓSTICO GRATUITO
+                  AGENDAR{windowWidth < 489 ? <br /> : ' '}DIAGNÓSTICO GRATUITO
                 </Button>
               </motion.div>
             </div>

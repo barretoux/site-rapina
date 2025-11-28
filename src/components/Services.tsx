@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { ChartNoAxesCombined, Globe, Stethoscope } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 interface Feature {
   icon: typeof Stethoscope;
@@ -13,30 +14,46 @@ interface Feature {
   characteristics?: string[];
   width: string;
   bullets?: string[];
+  baseHeight: number;
+  compactHeight: number;
 }
 
-const Services = () => {
+const WhyChoose = () => {
+  const [viewportWidth, setViewportWidth] = useState(() =>
+    typeof window !== "undefined" ? window.innerWidth : 1440,
+  );
+
+  useEffect(() => {
+    const handleResize = () => setViewportWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const features: Feature[] = [
     {
       icon: Stethoscope,
       title: "Raio-X Analítico",
-      description: "Entregamos um diagnóstico preciso e um <strong>plano de ação de curto prazo</strong> que permita ao cliente:",
+      description: "Entregamos um diagnóstico preciso e um <strong>plano de ação de curto prazo</strong> que permita o cliente:",
       bullets: [
         "Entender as causas reais dos seus principais gargalos;",
         "Obter clareza de prioridades;",
         "Receber um roteiro tático de 30–90 dias com entregáveis e métricas a acompanhar — tudo de forma rápida e objetiva para implementação própria ou evolução na esteira Rapina."
       ],
       price: "R$ 1.799",
+      baseHeight: 517, // -32%	
+      compactHeight: 553, // +7%
       size: "small",
-      width: "w-full"
+      width: "w-full md:max-w-sm", // largura para layout em colunas
     },
     {
       icon: ChartNoAxesCombined,
       title: "Conselho Direcional",
-      description: "Fornecemos direção estratégica, contínua e responsabilização tática ao cliente para uma operação mais coordenada e orientada a resultados. O objetivo é garantir eficiência, consistência e estratégia — sem que a Rapina tenha obrigação de executar todas as tarefas. Nesse serviço, atuamos como um <strong>departamento estratégico terceirizado</strong>, orientando decisões, validando hipóteses e entregando frameworks acionáveis. Além disso, garantimos priorização semanal, revisão constante dos indicadores e alinhamento das ações com as metas reais do negócio. O cliente ganha previsibilidade, maturidade operacional e redução drástica de erros estratégicos.",
+      description: "Fornecemos direção contínua e responsabilização tática ao cliente para uma operação mais coordenada e orientada a resultados. O objetivo é garantir eficiência e consistência — sem que a Rapina se obrigue a executar todas as tarefas. Nesse serviço, atuamos como um <strong>departamento estratégico terceirizado</strong>, orientando decisões, validando hipóteses e entregando frameworks acionáveis. Ademais, garantimos priorização semanal, revisão constante dos indicadores e alinhamento das ações com as metas reais do negócio. Os resultados consistem em previsibilidade, maturidade operacional e redução de erros estratégicos.",
       price: "R$ 2.799",
+      baseHeight: 638, // -16%
+      compactHeight: 683, // +7%
       size: "medium",
-      width: "w-full"
+      width: "w-full md:max-w-sm", // largura para layout em colunas
     },
     {
       icon: Globe,
@@ -48,8 +65,10 @@ const Services = () => {
         "Escopo vivo e modular: entregas ajustadas mensalmente conforme resultados e prioridades."
       ],
       price: "R$ X.XXX",
+      baseHeight: 760,
+      compactHeight: 813, // +7%
       size: "large",
-      width: "w-full"
+      width: "w-full md:max-w-sm", // largura para layout em colunas
     },
   ];
 
@@ -143,7 +162,7 @@ const Services = () => {
             whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="uppercase relative inline-block px-6 py-3 mb-4 text-primary z-10"
+            className="uppercase text-primary relative inline-block px-6 py-3 mb-4 z-10 text-sm max-[380px]:text-xs md:text-lg"
           >
             {/* Elemento retangular de destaque */}
             <span 
@@ -154,13 +173,13 @@ const Services = () => {
             />
             <span className="relative z-10">Você e seu negócio cada vez mais alto!</span>
           </motion.span>
-          <h2 className="uppercase pt-12 text-3xl text-gray-900 md:text-5xl font-bold tracking-tight">
+          <h2 className="uppercase pt-[0rem] text-3xl text-gray-900 md:text-5xl pt-12 font-bold tracking-tight">
             conheça{" "}
             <span className="uppercase text-transparent bg-clip-text bg-text-gradient-rapina">
               nossos serviços
             </span>
           </h2>
-          <p className="text-lg text-gray-700 max-w-2xl mx-auto">
+          <p className="text-base md:text-lg lg:text-xl text-gray-800 max-w-2xl mx-auto">
             Esse é o espaço para introduzir nossos serviços. Uma breve descrição dos serviços oferecidos e os melhores benefícios ou soluções:
           </p>
           <Link to="/solucoes">
@@ -180,7 +199,7 @@ const Services = () => {
           </Link>
         </div>
 
-        {/* Seção: Por que escolher a Rapina */}
+        {/* Seção: Por que escolher a Rapina (WhyChoose) */}
         <div className="max-w-7xl mx-auto text-left space-y-6 mb-16 relative z-10">
           <h2 className="text-3xl text-gray-900 md:text-5xl font-bold uppercase tracking-tight">
             <span className="text-transparent bg-clip-text bg-text-gradient-rapina">
@@ -188,13 +207,13 @@ const Services = () => {
             </span>  
             A RAPINA?
           </h2>
-          <p className="text-xl text-gray-800">
+          <p className="text-base md:text-lg lg:text-xl text-gray-800">
             Todo negócio nasce de uma visão.
           </p>
-          <p className="text-lg text-gray-700">
+          <p className="text-base md:text-lg lg:text-xl text-gray-800">
             Mas transformar essa visão em crescimento exige mais do que execução — exige estratégia, método e propósito.
           </p>
-          <p className="text-lg text-gray-700">
+          <p className="text-base md:text-lg lg:text-xl text-gray-800">
             E nós do Grupo Rapina COM possuímos as melhores soluções para o seu modelo de negócio:
           </p>
         </div>
@@ -202,16 +221,18 @@ const Services = () => {
         {/* Cards lado a lado em telas maiores, empilhados no mobile, centralizados na div */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6 max-w-7xl mx-auto items-end">
           {features.map((feature, index) => {
-            // Calcula altura: base 550px, aumentando 20% para cada card
-            const getHeightClasses = () => {
-              if (feature.size === "small") {
-                return "h-[440px] md:h-[550px]"; // 550px * 0.8 = 440px (mobile), 550px (desktop)
-              } else if (feature.size === "medium") {
-                return "h-[528px] md:h-[660px]"; // 660px * 0.8 = 528px (mobile), 660px (desktop)
-              } else {
-                return "h-[634px] md:h-[792px]"; // 792px * 0.8 = 634px (mobile), 792px (desktop)
-              }    
-            };
+            const cardHeight = (() => {
+              if (viewportWidth < 390) {
+                return Math.round(feature.compactHeight * 1.3);
+              }
+              if (viewportWidth < 535) {
+                return feature.compactHeight;
+              }
+              if (viewportWidth < 768) {
+                return Math.round(feature.baseHeight * 0.85);
+              }
+              return feature.baseHeight;
+            })();
 
             return (
               <motion.div
@@ -222,7 +243,6 @@ const Services = () => {
                 viewport={{ once: true }}
                 className={`
                   group relative
-                  ${getHeightClasses()}
                   w-full
                   rounded-2xl p-6 md:p-6 lg:p-8
                   bg-white
@@ -230,6 +250,7 @@ const Services = () => {
                   transition-[border-color] duration-300
                   flex flex-col justify-between
                 `}
+                style={{ height: cardHeight }}
               >
               {/* Sombra fixa atrás do card - igual aos cards de profissionais da FinalCTA */}
               <div 
@@ -327,4 +348,4 @@ const Services = () => {
   );
 };
 
-export default Services;
+export default WhyChoose;

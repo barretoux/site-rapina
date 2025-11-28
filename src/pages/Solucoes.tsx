@@ -4,9 +4,59 @@ import { Button } from "@/components/ui/button";
 import { Target, Scale, TrendingUp, MessageCircle } from "lucide-react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 const Solucoes = () => {
   const navigate = useNavigate();
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Função para calcular tamanho e posição da águia baseado no viewport
+  const getEagleStyles = () => {
+    if (windowWidth >= 1024) {
+      // Desktop grande (>= 1024px)
+      return {
+        width: "210%",
+        height: "210%",
+        transform: "translate(0px, 200px)"
+      };
+    } else if (windowWidth >= 768) {
+      // Tablet/Desktop (768-1024px)
+      return {
+        width: "190%",
+        height: "190%",
+        transform: "translate(0px, 150px)"
+      };
+    } else if (windowWidth >= 535) {
+      // Tablet pequeno (535-768px)
+      return {
+        width: "170%",
+        height: "170%",
+        transform: "translate(0px, 100px)"
+      };
+    } else if (windowWidth >= 380) {
+      // Mobile grande (380-535px)
+      return {
+        width: "140%",
+        height: "140%",
+        transform: "translate(0px, 50px)"
+      };
+    } else {
+      // Mobile pequeno (< 380px)
+      return {
+        width: "120%",
+        height: "120%",
+        transform: "translate(0px, 50px)"
+      };
+    }
+  };
+
+  const eagleStyles = getEagleStyles();
 
   const scrollToLeadCapture = () => {
     navigate("/rapina#lead-capture");
@@ -21,7 +71,7 @@ const Solucoes = () => {
           const navHeight = nav ? nav.offsetHeight : 80;
           
           // Offset adicional maior para garantir que não corte (60px de espaçamento)
-          const additionalOffset = 80;
+          const additionalOffset = 60;
           const totalOffset = navHeight + additionalOffset;
           
           // Calcula a posição considerando o offset
@@ -82,15 +132,15 @@ const Solucoes = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="max-w-4xl mx-auto text-center space-y-6 mb-20"
             >
-              <h1 className="text-4xl md:text-6xl font-bold uppercase tracking-tight">
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold uppercase tracking-tight">
               <span className="font-bold text-transparent bg-clip-text bg-text-gradient-rapina">NOSSAS </span>SOLUÇÕES
               </h1>
-              <p className="text-xl text-muted-foreground leading-relaxed">
+              <p className="text-md md:text-lg lg:text-xl text-muted-foreground leading-relaxed">
                 Transformamos visão em resultados através de estratégias integradas e execução com performance contínua.
               </p>
             </motion.div>
 
-            <div className="space-y-16 max-w-6xl mx-auto">
+            <div className="space-y-10 sm:space-y-16 max-w-6xl mx-auto">
               {solutions.map((solution, index) => (
                 <motion.div
                   key={index}
@@ -98,11 +148,11 @@ const Solucoes = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: index * 0.1, ease: "easeOut" }}
                   viewport={{ once: true, margin: "-50px" }}
-                  className={`grid md:grid-cols-2 gap-8 items-center ${
+                  className={`grid lg:grid-cols-2 gap-y-6 sm:gap-y-10 gap-x-4 sm:gap-x-8 items ${
                     index % 2 === 1 ? "md:flex-row-reverse" : ""
                   }`}
                 >
-                  <div className={`space-y-6 ${index % 2 === 1 ? "md:order-2" : ""}`}>
+                  <div className={`space-y-6 ${index % 2 === 1 ? "lg:order-2" : ""}`}>
                     <motion.div 
                       initial={{ opacity: 0, scale: 0.8 }}
                       whileInView={{ opacity: 1, scale: 1 }}
@@ -112,13 +162,13 @@ const Solucoes = () => {
                     >
                       <solution.icon className="w-8 h-8 text-primary" />
                     </motion.div>
-                    <h2 className="text-3xl md:text-4xl font-bold uppercase">
+                    <h2 className="text-2xl md:text-3xl font-bold uppercase">
                       {solution.title}
                     </h2>
-                    <p className="text-xl text-foreground/90">
+                    <p className="text-md md:text-lg lg:text-xl text-foreground/90">
                       {solution.description}
                     </p>
-                    <p className="text-lg text-muted-foreground leading-relaxed">
+                    <p className="text-sm md:text-md lg:text-lg text-muted-foreground leading-relaxed">
                       {solution.details}
                     </p>
                     <Button variant="hero" size="sm" className="rounded-full px-6 py-3 text-sm">
@@ -147,26 +197,21 @@ const Solucoes = () => {
         <section className="py-32 md:py-40 px-4 bg-card/30 relative overflow-visible">
           {/* Background SVG - Águia */}
           <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 0, opacity: 0.25 }}>
-            <div className="flex items-center justify-center h-full w-full" style={{ minHeight: "100vh" }}>
+            <div className="flex items-center justify-center h-full w-full">
               <svg 
                 version="1.1" 
                 id="Layer_1" 
                 xmlns="http://www.w3.org/2000/svg" 
                 xmlnsXlink="http://www.w3.org/1999/xlink" 
-                x="0px" 
+                x="0px"
                 y="0px"
-                width="140%" 
-                height="140%" 
+                width={eagleStyles.width}
+                height={eagleStyles.height}
                 viewBox="0 0 800 800" 
                 preserveAspectRatio="xMidYMid meet"
                 xmlSpace="preserve"
                 style={{ 
-                  maxWidth: "none", 
-                  maxHeight: "none",
-                  transform: "translate(0px, 50px)" // Ajuste X e Y aqui: translate(Xpx, Ypx)
-                  // Para mover: translate(Xpx, Ypx)
-                  // X positivo = direita, X negativo = esquerda
-                  // Y positivo = baixo, Y negativo = cima
+                  transform: eagleStyles.transform
                 }}
               >
               <style type="text/css">
@@ -376,7 +421,7 @@ const Solucoes = () => {
             </div>
           </div>
           <div className="container mx-auto text-center relative z-10">
-            <h2 className="text-3xl md:text-5xl font-bold uppercase mb-8">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold uppercase mb-8">
               QUAL É A URGÊNCIA <br /> EM ALAVANCAR <span className="font-bold text-transparent bg-clip-text bg-text-gradient-rapina">SEUS RESULTADOS</span>?
             </h2>
             <Button 
@@ -394,8 +439,11 @@ const Solucoes = () => {
                 hover:scale-105
                 shadow-md hover:shadow-lg
               "
+              style={{
+                transform: windowWidth < 535 ? 'scale(0.8)' : undefined
+              }}
             >
-              MARQUE UM DIAGNÓSTICO GRATUITO
+              MARQUE UM{windowWidth < 419 ? <br /> : ' '}DIAGNÓSTICO GRATUITO
             </Button>
           </div>
         </section>

@@ -26,17 +26,21 @@ const DashboardBackground = () => {
 
   const isMobile = windowWidth < 768;
   const isTablet = windowWidth >= 768 && windowWidth < 1024;
+  const dashboardMaxWidth = isMobile ? 450 : isTablet ? 640 : 920;
+  const dashboardHeight = isMobile ? 320 : isTablet ? 360 : 432;
 
   return (
     <div className="relative w-full h-full flex items-center justify-center">
       {/* Card grande do dashboard */}
       <div 
-        className="relative w-full max-w-[920px] h-[432px] rounded-2xl border"
+        className="relative w-full rounded-2xl border"
         style={{
           background: "rgba(15, 20, 30, 0.7)",
           backdropFilter: "blur(12px)",
           borderColor: "rgba(255, 69, 0, 0.4)",
           boxShadow: "0 8px 32px rgba(0, 0, 0, 0.5), 0 0 50px rgba(255, 69, 0, 0.15)",
+          maxWidth: `${dashboardMaxWidth}px`,
+          height: `${dashboardHeight}px`,
         }}
       >
         {/* Grid interno do dashboard */}
@@ -314,7 +318,20 @@ const Hero = () => {
       icon: Target,
       title: "Geração de Demanda",
       color: "#ff4500",
+      // >= 1280px (large screen desktop)
       position: { top: "25%", left: "15%" },
+      // 1024-1280px (desktop)
+      pos1024: { top: "26%", left: "14%" },
+      // 768-1024px (tablet)
+      pos768: { top: "28%", left: "9%" },
+      // 640-768px
+      pos640: { top: "35%", left: "10%" },
+      // 535-640px
+      pos535: { top: "32%", left: "5%" },
+      // 380-535px
+      pos380: { top: "44%", left: "2%" },
+      // 320-380px
+      pos320: { top: "44%", left: "-3%" },
       delay: 0,
       parallaxSpeed: 3.5,
     },
@@ -323,22 +340,40 @@ const Hero = () => {
       title: "Funil de Vendas",
       color: "#ff4500",
       position: { top: "65%", left: "12%" },
+      pos1024: { top: "64%", left: "11%" },
+      pos768: { top: "63%", left: "7%" },
+      pos640: { top: "67%", left: "8%" },
+      pos535: { top: "64%", left: "5%" },
+      pos380: { top: "74%", left: "2%" },
+      pos320: { top: "74%", left: "-3%" },
       delay: 0.1,
-      parallaxSpeed: 1.1,
+      parallaxSpeed: 1.5,
     },
     {
       icon: RefreshCw,
       title: "Recorrência",
       color: "#d7263d",
       position: { top: "50%", left: "30%" },
+      pos1024: { top: "49%", left: "29%" },
+      pos768: { top: "48%", left: "26%" },
+      pos640: { top: "59%", left: "29%" },
+      pos535: { top: "52%", left: "20%" },
+      pos380: { top: "67%", left: "15%" },
+      pos320: { top: "69%", left: "10%" },
       delay: 0.2,
-      parallaxSpeed: 2.8,
+      parallaxSpeed: 3.05,
     },
     {
       icon: CirclePlay,
       title: "Audiovisual",
       color: "#ff4500",
       position: { top: "25%", left: "45%" },
+      pos1024: { top: "26%", left: "44%" },
+      pos768: { top: "27%", left: "41%" },
+      pos640: { top: "33%", left: "42%" },
+      pos535: { top: "32%", left: "38%" },
+      pos380: { top: "45%", left: "35%" },
+      pos320: { top: "47%", left: "28%" },
       delay: 0.3,
       parallaxSpeed: 3.8,
     },
@@ -347,22 +382,40 @@ const Hero = () => {
       title: "Oferta",
       color: "#d7263d",
       position: { top: "65%", left: "45%" },
+      pos1024: { top: "64%", left: "44%" },
+      pos768: { top: "63%", left: "41%" },
+      pos640: { top: "67%", left: "42%" },
+      pos535: { top: "65%", left: "38%" },
+      pos380: { top: "77%", left: "35%" },
+      pos320: { top: "75%", left: "28%" },
       delay: 0.4,
-      parallaxSpeed: 1.06,
+      parallaxSpeed: 1.8,
     },
     {
       icon: Megaphone,
       title: "Posicionamento",
       color: "#d7263d",
-      position: { top: "25%", left: "75%" },
+      position: { top: "26%", left: "75%" },
+      pos1024: { top: "27%", left: "74%" },
+      pos768: { top: "28%", left: "76%" },
+      pos640: { top: "33%", left: "72%" },
+      pos535: { top: "32%", left: "68%" },
+      pos380: { top: "44%", left: "65%" },
+      pos320: { top: "44%", left: "60%" },
       delay: 0.5,
-      parallaxSpeed: 3.6,
+      parallaxSpeed: 3.4,
     },
     {
       icon: Users,
       title: "Processo Comercial",
       color: "#ff4500",
       position: { top: "50%", left: "60%" },
+      pos1024: { top: "49%", left: "59%" },
+      pos768: { top: "48%", left: "57%" },
+      pos640: { top: "59%", left: "54%" },
+      pos535: { top: "52%", left: "52%" },
+      pos380: { top: "67%", left: "48%" },
+      pos320: { top: "69%", left: "45%" },
       delay: 0.6,
       parallaxSpeed: 3,
     },
@@ -370,31 +423,44 @@ const Hero = () => {
       icon: Signature,
       title: "Branding",
       color: "#d7263d",
-      position: { top: "65%", left: "75%" },
+      position: { top: "66%", left: "75%" },
+      pos1024: { top: "65%", left: "74%" },
+      pos768: { top: "64%", left: "76%" },
+      pos640: { top: "69%", left: "72%" },
+      pos535: { top: "66%", left: "68%" },
+      pos380: { top: "77%", left: "65%" },
+      pos320: { top: "77%", left: "60%" },
       delay: 0.7,
-      parallaxSpeed: 1.5,
+      parallaxSpeed: 1.6,
     },
   ];
 
   const getResponsivePosition = (card: typeof cards[0]) => {
-    const top = parseFloat(card.position.top);
-    const left = parseFloat(card.position.left);
-
+    // 320-380px
+    if (screenWidth < 380) {
+      return card.pos320;
+    }
+    // 380-535px
+    if (screenWidth < 535) {
+      return card.pos380;
+    }
+    // 535-640px
+    if (screenWidth < 640) {
+      return card.pos535;
+    }
+    // 640-768px
     if (screenWidth < 768) {
-      const scaledLeft = -2 + (left / 100) * 90;
-      return {
-        top: `${top}%`,
-        left: `${scaledLeft}%`,
-      };
+      return card.pos640;
     }
-
-    if (screenWidth >= 768 && screenWidth < 1024) {
-      return {
-        top: `${top}%`,
-        left: `${left * 0.9}%`,
-      };
+    // 768-1024px (tablet)
+    if (screenWidth < 1024) {
+      return card.pos768;
     }
-
+    // 1024-1280px (desktop)
+    if (screenWidth < 1280) {
+      return card.pos1024;
+    }
+    // >= 1280px (large screen desktop)
     return card.position;
   };
 
@@ -474,14 +540,15 @@ const Hero = () => {
       <LightPoints />
 
       {/* Seção Hero */}
-      <div className="relative z-10 my-8 flex flex-col items-center justify-center px-4 pt-24 pb-8">
+      <div className={`relative z-10 my-8 flex flex-col items-center justify-center px-4 pt-24 pb-8 max-sm:mt-8 mb-0`}>
         <div className="container mx-auto relative z-10 py-2">
-          <div className="max-w-7xl mx-auto text-center space-y-2">
+          <div className="flex flex-col items-center justify-center text-center max-w-7xl mx-auto space-y-[0.1rem]">
             <motion.span
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="uppercase decoration-primary relative inline-block px-6 py-3"
+              className="uppercase decoration-primary relative inline-block px-6 py-3 text-base md:text-base max-md:text-sm max-[586px]:text-xs max-[400px]:text-[0.6rem]"
+
             >
               {/* Elemento retangular de destaque */}
               <span 
@@ -516,10 +583,10 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="text-lg md:text-2xl lg:text-[42px] font-bold uppercase tracking-tight mb-12"
+              className="text-lg md:text-2xl lg:text-3xl xl:text-[2.5rem] font-bold uppercase tracking-tight mb-12 max-[586px]:text-sm max-[479px]:text-[0.75rem] max-[429px]:text-[0.68rem]"
               style={{ lineHeight: '1.1' }}
             >
-              <span className="text-transparent bg-clip-text bg-text-gradient-rapina block mb-3 pt-1">
+              <span className="text-transparent bg-clip-text bg-text-gradient-rapina block mb-2 pt-1">
                 SOLUÇÕES QUE EVOLUEM E ACELERAM NEGÓCIOS
               </span>
                 <span className="block mb-3">
@@ -560,8 +627,14 @@ const Hero = () => {
                   e.currentTarget.style.borderColor = '#ec7637';
                 }}
               >
-                <p className="text-xs md:text-sm text-white" style={{ fontFamily: "'Lato', sans-serif" }}>
-                Agende um diagnóstico com um <span className="font-bold text-transparent bg-clip-text bg-text-gradient-rapina group-hover:!text-white group-hover:!bg-transparent">especialista do Grupo Rapina COM.</span>
+              <p className="text-xs md:text-sm text-white max-[390px]:text-[0.6rem]" style={{ fontFamily: "'Lato', sans-serif" }}>
+                Agende um diagnóstico com{" "}
+                <span className="block sm:inline font-bold text-transparent bg-clip-text bg-text-gradient-rapina group-hover:!text-white group-hover:!bg-transparent">
+                  um especialista{" "}
+                  <span className="inline max-[390px]:block">
+                    do Grupo Rapina COM.
+                  </span>
+                </span>
               </p>
               </Button>
             </motion.div>
@@ -611,7 +684,7 @@ const Hero = () => {
         </div>
 
         {/* Cards flutuantes */}
-        <div className="relative container mx-auto h-full min-h-[90vh] overflow-visible px-8 z-10">
+        <div className="relative container mx-auto max-xl:h-full min-h-[90vh] max-lg:min-h-[70vh] max-md:min-h-[60vh] overflow-visible px-8 z-10">
           {cards.map((card, index) => {
             const position = getResponsivePosition(card);
             const y = useTransform(
