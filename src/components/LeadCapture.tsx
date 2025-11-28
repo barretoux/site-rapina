@@ -283,20 +283,20 @@ const LeadCapture: React.FC = () => {
 
       <div className="container mx-auto relative z-10">
         <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-8 items-start">
+          <div className="grid md:grid-cols-2 gap-8 items-start max-md:flex max-md:flex-col max-md:items-center max-md:justify-center">
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
               viewport={{ once: true, margin: "-50px" }}
-              className="relative flex justify-center md:block"
+              className="relative flex justify-center md:block max-md:w-full"
             >
               <div className="absolute -top-8 -left-16 w-32 h-32 bg-red-500/20 rounded-full blur-3xl animate-pulse" />
               <div className="absolute -top-4 -left-8 w-16 h-16 bg-red-400/30 rounded-full blur-2xl" />
 
               <form
                 onSubmit={handleSubmit}
-                className="relative border border-white/10 rounded-2xl p-6 bg-white/5 backdrop-blur-xl space-y-4 shadow-2xl shadow-red-500/10 max-w-md w-full"
+                className="relative border border-white/10 rounded-2xl p-6 bg-white/5 backdrop-blur-xl space-y-4 shadow-2xl shadow-red-500/10 w-full max-w-md max-md:w-[448px]"
                 style={{
                   background: "rgba(255, 255, 255, 0.08)",
                   backdropFilter: "blur(20px)",
@@ -456,7 +456,7 @@ const LeadCapture: React.FC = () => {
               className="space-y-8 max-[380px]:space-y-6 max-[380px]:flex max-[380px]:flex-col max-[380px]:items-stretch max-[380px]:px-2"
             >
               <div className="space-y-6">
-                <h3 className="font-bold sm:text-lg lg:text-2xl max-[640px]:text-md max-[380px]:text-sm">
+                <h3 className="font-bold text-lg lg:text-2xl max-[380px]:text-sm">
                   Agende uma reunião online, receba um diagnóstico e comece a escalar as vendas do seu negócio.
                 </h3>
 

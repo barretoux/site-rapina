@@ -8,12 +8,13 @@ const FinalCTA = () => {
   const location = useLocation();
   
   const scrollToLeadCapture = () => {
+    const navbarHeight = window.innerWidth >= 768 ? 160 : 130;
+    
     if (location.pathname !== "/" && location.pathname !== "/rapina") {
       navigate("/rapina#lead-capture");
       setTimeout(() => {
         const element = document.getElementById("lead-capture");
         if (element) {
-          const navbarHeight = 80;
           const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
           const offsetPosition = elementPosition - navbarHeight;
           
@@ -26,7 +27,6 @@ const FinalCTA = () => {
     } else {
       const element = document.getElementById("lead-capture");
       if (element) {
-        const navbarHeight = 130;
         const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
         const offsetPosition = elementPosition - navbarHeight;
         
@@ -226,7 +226,7 @@ const FinalCTA = () => {
       </div>
       
       <div className="container mx-auto relative z-10">
-        <div className="max-w-[74rem] mx-auto md:min-w-[44rem] ">
+        <div className="max-w-[74rem] mx-auto">
           {/* Header */}
           <div className="text-center mb-12">
             <h2 className="text-3xl text-gray-800 md:text-4xl lg:text-5xl font-bold uppercase tracking-tight mb-4">

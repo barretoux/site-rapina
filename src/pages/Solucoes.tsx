@@ -95,7 +95,7 @@ const Solucoes = () => {
       title: "Metodologia Balance",
       description: "Une estratégia inteligente, relacionamento autêntico e otimização de processos.",
       details: "Nossa metodologia proprietária combina visão estratégica, execução precisa e análise contínua de performance.",
-      image: "./src/assets/metodo-balance.jpg"
+      image: "https://i.ibb.co/zVv3vc10/metodo-balance.jpg"
     },
     {
       icon: Target,
@@ -185,7 +185,7 @@ const Solucoes = () => {
                     <img
                       src={solution.image}
                       alt={solution.title}
-                      className="w-full h-full object-cover rounded-2xl shadow-xl shadow-primary/10"
+                      className="w-full max-w-[600px] mx-auto h-full object-cover rounded-2xl shadow-xl shadow-primary/10"
                     />
                   </motion.div>
                 </motion.div>
@@ -194,7 +194,7 @@ const Solucoes = () => {
           </div>
         </section>
 
-        <section className="py-32 md:py-40 px-4 bg-card/30 relative overflow-visible">
+        <section className="py-32 md:py-40 px-4 bg-card/30 relative overflow-hidden">
           {/* Background SVG - Águia */}
           <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 0, opacity: 0.25 }}>
             <div className="flex items-center justify-center h-full w-full">

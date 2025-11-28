@@ -547,7 +547,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="uppercase decoration-primary relative inline-block px-6 py-3 text-base md:text-base max-md:text-sm max-[586px]:text-xs max-[400px]:text-[0.6rem]"
+              className="uppercase decoration-primary relative inline-block px-6 py-3 text-base md:text-base max-md:text-sm max-[390px]:text-[0.6rem]"
 
             >
               {/* Elemento retangular de destaque */}
@@ -583,16 +583,17 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="text-lg md:text-2xl lg:text-3xl xl:text-[2.5rem] font-bold uppercase tracking-tight mb-12 max-[586px]:text-sm max-[479px]:text-[0.75rem] max-[429px]:text-[0.68rem]"
-              style={{ lineHeight: '1.1' }}
+              className="text-lg md:text-2xl lg:text-3xl xl:text-[2.5rem] font-bold uppercase tracking-tight mb-12 leading-[1.5]"
             >
-              <span className="text-transparent bg-clip-text bg-text-gradient-rapina block mb-2 pt-1">
+              <span className="text-transparent bg-clip-text bg-text-gradient-rapina block mb-[0.1rem] pt-2 pb-1">
                 SOLUÇÕES QUE EVOLUEM E ACELERAM NEGÓCIOS
               </span>
-                <span className="block mb-3">
-                 INTEGRANDO VISÃO, PLANEJAMENTO E EXECUÇÃO COM<br />
-                 <span className="block mt-4">PERFORMANCE CONTÍNUA</span>
-                </span>
+              <span className="block mb-[0.1rem] pt-1 pb-1 max-[590px]:inline max-[590px]:mb-0">
+                INTEGRANDO VISÃO, PLANEJAMENTO E EXECUÇÃO COM
+              </span>
+              <span className="block pt-1 pb-1 max-[590px]:inline max-[590px]:ml-">
+                PERFORMANCE CONTÍNUA
+              </span>
 
             </motion.h1>
 
@@ -625,9 +626,10 @@ const Hero = () => {
                 onMouseLeave={(e) => {
                   e.currentTarget.style.background = 'transparent';
                   e.currentTarget.style.borderColor = '#ec7637';
+
                 }}
               >
-              <p className="text-xs md:text-sm text-white max-[390px]:text-[0.6rem]" style={{ fontFamily: "'Lato', sans-serif" }}>
+              <p className="text-[0.7rem] md:text-sm text-white max-[390px]:text-[0.6rem]" style={{ fontFamily: "'Lato', sans-serif" }}>
                 Agende um diagnóstico com{" "}
                 <span className="block sm:inline font-bold text-transparent bg-clip-text bg-text-gradient-rapina group-hover:!text-white group-hover:!bg-transparent">
                   um especialista{" "}
@@ -660,7 +662,7 @@ const Hero = () => {
         </div>
 
         {/* Ponto focal de luz branca mais forte - centralizado com o dashboard */}
-        <div className="absolute top-16 left-1/2 -translate-x-1/2 w-[576px] h-[288px] pointer-events-none z-[1]">
+        <div className="absolute top-16 left-1/2 -translate-x-1/2 w-full max-w-[576px] h-[288px] pointer-events-none z-[1]">
           <motion.div
             className="absolute inset-0"
             style={{
@@ -684,7 +686,7 @@ const Hero = () => {
         </div>
 
         {/* Cards flutuantes */}
-        <div className="relative container mx-auto max-xl:h-full min-h-[90vh] max-lg:min-h-[70vh] max-md:min-h-[60vh] overflow-visible px-8 z-10">
+        <div className="relative container mx-auto max-xl:h-full min-h-[90vh] max-lg:min-h-[70vh] max-md:min-h-[60vh] overflow-visible px-4 sm:px-6 md:px-8 z-10">
           {cards.map((card, index) => {
             const position = getResponsivePosition(card);
             const y = useTransform(
